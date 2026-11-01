@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Contact · NXT Gate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="contact">
+<div id="site-header"></div>
+
+<main>
+<section class="phero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Contact</span></nav>
+    <span class="over">Contact sales</span>
+    <h1>Request a quote or <em>site survey</em></h1>
+    <p class="lead">Tell us about your property. An engineer will call within one working day.</p>
+  </div>
+</section>
+
+<section class="band grey">
+  <div class="wrap quote">
+    <div class="quote-side">
+      <span class="over">Get in touch</span>
+      <h2 class="h2">Talk to our team</h2>
+      <div class="cinfo">
+        <div><span>Sales</span><b>hello@nxtgate.in</b></div>
+        <div><span>Phone</span><b>+91 00000 00000</b></div>
+        <div><span>Hours</span><b>Mon–Sat, 9:30–18:30 IST</b></div>
+        <div><span>Office</span><b>Tunwal Business Center, Sadashiv Peth, Pune</b></div>
+      </div>
+    </div>
+    <form id="qForm" novalidate>
+      <div class="f2">
+        <label for="q-name">Full name *<input id="q-name" autocomplete="name" required></label>
+        <label for="q-phone">Mobile *<input id="q-phone" type="tel" autocomplete="tel" required></label>
+      </div>
+      <div class="f2">
+        <label for="q-org">Property or company *<input id="q-org" required></label>
+        <label for="q-city">City<input id="q-city" autocomplete="address-level2"></label>
+      </div>
+      <div class="f2">
+        <label for="q-type">Property type<select id="q-type"><option>Residential society</option><option>Corporate campus</option><option>Industrial / logistics</option><option>Parking / township</option></select></label>
+        <label for="q-lanes">Number of lanes<select id="q-lanes"><option>1–2</option><option>3–5</option><option>6–10</option><option>More than 10</option></select></label>
+      </div>
+      <label for="q-need">I'm interested in<select id="q-need"><option>Barriers and Gate Tech app</option><option>Boom barriers</option><option>ANPR cameras</option><option>Gate Tech app</option><option>Service for an existing gate</option></select></label>
+      <label for="q-msg">Requirements<textarea id="q-msg" placeholder="For example: 2 advertising booms with ANPR at the main gate and the app for 300 flats"></textarea></label>
+      <button class="btn btn-red" type="submit">Submit request</button>
+      <p class="fnote" id="qNote" role="status" hidden></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<div id="site-footer"></div>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Products · NXT Gate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="products">
+<div id="site-header"></div>
+
+<main>
+<section class="phero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Products</span></nav>
+    <span class="over">Product range</span>
+    <h1>Barriers and devices built for <em>every lane</em></h1>
+    <p class="lead">Boom barriers from 3 to 6 m, ANPR cameras and safety sensors. Every barrier ships with reflective boom marking, a control unit and installation by our engineers.</p>
+  </div>
+</section>
+<nav class="subnav" aria-label="On this page"><div class="wrap"><a href="#explorer">Product explorer</a><a href="#compare">Compare models</a><a href="#included">What's included</a><a href="#choose">Choosing a barrier</a></div></nav>
+
+<section class="band grey" id="explorer">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="over">Product explorer</span><h2 class="h2">Choose a model and operate it</h2><p class="lead">Select a product, set the boom length and raise the boom. On the Advertising Boom, type your property name to preview the panel.</p></div>
+    </div>
+    <div class="px">
+      <div class="px-list" role="tablist" aria-label="Products" id="pxList"></div>
+      <div class="px-main">
+        <div class="px-stage"><span class="px-tag" id="pxTag">Interactive view</span><svg id="pxSvg" viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Product illustration"></svg></div>
+        <div class="px-tools">
+          <div id="pxSizesWrap"><span class="tool-lbl">Boom length</span><span class="seg" id="pxSizes"></span></div>
+          <label id="pxTextWrap" for="pxText">Panel text <input id="pxText" maxlength="18" value="GREEN ACRES"></label>
+          <button class="btn btn-red" type="button" id="pxToggle">Raise boom</button>
+        </div>
+        <div class="px-info">
+          <div><span class="code" id="pxCode"></span><h3 id="pxName"></h3><p id="pxDesc"></p></div>
+          <dl class="spec" id="pxSpec"></dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="compare">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="over">Compare</span><h2 class="h2">Barrier models at a glance</h2></div>
+      <a class="link" href="contact.html">Get a quote for your lanes →</a>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Model</th><th>Boom type</th><th>Lengths</th><th>Drive</th><th>Best for</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>Advertising Boom<small>BS-AD02A</small></td><td>Straight boom with branding panel</td><td>3 · 3.5 · 4 m</td><td>DC motor</td><td>Society and campus main gates</td><td><a class="link" href="#explorer" data-pick="ad">View</a></td></tr>
+          <tr><td>Telescopic Barrier<small>BS-DZ112</small></td><td>3-stage telescopic</td><td>6 m</td><td>24V DC brushless, 6 s</td><td>Wide lanes, low headroom</td><td><a class="link" href="#explorer" data-pick="tele">View</a></td></tr>
+          <tr><td>Fence Barrier<small>BS-5DZM</small></td><td>Articulated fence arm</td><td>5 · 6 m</td><td>DC motor</td><td>Mixed vehicle and foot traffic</td><td><a class="link" href="#explorer" data-pick="fence">View</a></td></tr>
+          <tr><td>Heavy-Duty Fence<small>BS-6DZM</small></td><td>Double-rail fence arm</td><td>6 m</td><td>DC motor</td><td>Factories, warehouses, docks</td><td><a class="link" href="#explorer" data-pick="heavy">View</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="band grey" id="included">
+  <div class="wrap split">
+    <div class="split-copy">
+      <span class="over">What's included</span>
+      <h2>Every barrier arrives ready to run</h2>
+      <p class="lead">We supply, install and commission the complete lane, so there is one company accountable for it working.</p>
+    </div>
+    <div class="panel">
+      <ul class="ticks">
+        <li>Barrier cabinet with control unit</li>
+        <li>Boom with 5R5L reflective marking</li>
+        <li>Remote transmitters (T23 with telescopic models)</li>
+        <li>Loop detector and induction loop on request</li>
+        <li>Movable boom support for long booms</li>
+        <li>Installation, commissioning and staff training</li>
+        <li>Stocked replacement parts for every model</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="choose">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="over">Buying guide</span><h2 class="h2">Choosing the right barrier</h2></div></div>
+    <div class="grid4">
+      <div><b>Lane up to 4 m</b><span>Advertising Boom BS-AD02A. Adds your society or brand name to the gate.</span></div>
+      <div><b>Wide lane, low roof</b><span>Telescopic BS-DZ112. A 6 m boom that clears basements and canopies.</span></div>
+      <div><b>Bikes and walkers</b><span>Fence Barrier BS-5DZM. The grille stops anyone slipping under the arm.</span></div>
+      <div><b>Trucks and heavy use</b><span>Heavy-Duty BS-6DZM. Stronger cabinet and a double-rail arm.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Not sure which barrier fits your gate?</h2>
+    <div class="acts"><a class="btn btn-red" href="contact.html">Book a free site survey</a></div>
+  </div>
+</section>
+</main>
+
+<div id="site-footer"></div>
+<script src="site.js"></script>
+</body>
+</html>

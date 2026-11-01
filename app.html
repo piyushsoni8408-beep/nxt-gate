@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Gate Tech App · NXT Gate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="app">
+<div id="site-header"></div>
+
+<main>
+<section class="phero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Gate Tech App</span></nav>
+    <span class="over">Gate Tech App</span>
+    <h1>The gate, run from <em>one screen</em></h1>
+    <p class="lead">Residents, guards and administrators work from the same live record. Because the app is connected to our barriers, an approval opens the gate.</p>
+  </div>
+</section>
+<nav class="subnav" aria-label="On this page"><div class="wrap"><a href="#features">Features</a><a href="#roles">For each role</a><a href="#more">More features</a></div></nav>
+
+<section class="band grey" id="features">
+  <div class="wrap app-grid">
+    <div>
+      <div style="display:grid;gap:14px;margin-bottom:36px"><span class="over">Features</span><h2 class="h2">Select a feature to see it in the app</h2></div>
+      <div class="feat-list" role="tablist" aria-label="App features">
+        <button class="feat-btn" role="tab" aria-selected="true" data-f="0"><span class="n">01</span><span><b>Visitor approvals</b><span class="d">A guest arrives, the resident gets a notification and approves with one tap.</span></span><span class="arr">→</span></button>
+        <button class="feat-btn" role="tab" aria-selected="false" data-f="1"><span class="n">02</span><span><b>Guest passes</b><span class="d">Share a QR or OTP pass before guests arrive. The guard scans it and they drive in.</span></span><span class="arr">→</span></button>
+        <button class="feat-btn" role="tab" aria-selected="false" data-f="2"><span class="n">03</span><span><b>Daily help &amp; deliveries</b><span class="d">Recurring passes for staff, quick passes for couriers, with arrival times.</span></span><span class="arr">→</span></button>
+        <button class="feat-btn" role="tab" aria-selected="false" data-f="3"><span class="n">04</span><span><b>Entry &amp; exit records</b><span class="d">Every vehicle and visitor, searchable by gate, flat or date.</span></span><span class="arr">→</span></button>
+        <button class="feat-btn" role="tab" aria-selected="false" data-f="4"><span class="n">05</span><span><b>Gate control &amp; SOS</b><span class="d">Open or hold any barrier remotely and raise an emergency alert to all guards.</span></span><span class="arr">→</span></button>
+      </div>
+    </div>
+    <div class="phone" aria-label="App preview"><div class="scr"><div class="scr-head"><small id="scrSub">Tower B · Flat 1204</small><b id="scrTitle">Visitor at gate</b></div><div class="scr-body" id="scrBody"></div><div class="scr-tab"><span class="on">Home</span><span>Visitors</span><span>Gate</span><span>Profile</span></div></div></div>
+  </div>
+</section>
+
+<section class="band" id="roles">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="over">For each role</span><h2 class="h2">One app, three views</h2></div></div>
+    <div class="roles">
+      <div class="role"><h3>Residents</h3><ul class="ticks"><li>Approve or deny visitors at the gate</li><li>Send guest passes in advance</li><li>Track daily help and deliveries</li><li>Raise an SOS to all guards</li></ul></div>
+      <div class="role"><h3>Guards</h3><ul class="ticks"><li>See who is expected before they arrive</li><li>Scan QR and OTP passes</li><li>Log walk-in visitors with a photo</li><li>Override a barrier when needed</li></ul></div>
+      <div class="role"><h3>Committee &amp; admins</h3><ul class="ticks"><li>Live status of every gate and lane</li><li>Entry records by flat, gate or date</li><li>Vehicle whitelist and access rules</li><li>Exportable reports</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="band grey" id="more">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="over">More features</span><h2 class="h2">The details that make the gate run smoothly</h2></div></div>
+    <div class="grid4">
+      <div><b>Leave at gate</b><span>Deliveries held with the guard and logged for collection.</span></div>
+      <div><b>Staff attendance</b><span>In and out times for maids, drivers and cooks.</span></div>
+      <div><b>Vehicle whitelist</b><span>Resident and employee plates synced to the ANPR camera.</span></div>
+      <div><b>Multi-gate support</b><span>Several gates, blocks or societies on one dashboard.</span></div>
+      <div><b>Emergency alerts</b><span>SOS reaches every guard and committee member at once.</span></div>
+      <div><b>Guard patrol</b><span>Checkpoint rounds recorded with time stamps.</span></div>
+      <div><b>Offline gate</b><span>Recognition runs on the camera, so entry continues without internet.</span></div>
+      <div><b>Reports</b><span>Daily, weekly and monthly access summaries.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>See the Gate Tech app working at your gate.</h2>
+    <div class="acts"><a class="btn btn-red" href="contact.html">Book a demo</a></div>
+  </div>
+</section>
+</main>
+
+<div id="site-footer"></div>
+<script src="site.js"></script>
+</body>
+</html>

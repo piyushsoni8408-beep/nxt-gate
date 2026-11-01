@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="utf-8">
+<title>NXT Gate</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="NXT Gate by Tunwal: boom barriers, number-plate cameras and one app for every entry and exit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: dark brand bands top and bottom (where the logo lives), a quiet light body with one column of content */
+:root {
+  color-scheme: light;
+  --night: #0A0B11;
+  --night-2: #14161F;
+  --paper: #F4F5F7;
+  --card: #FFFFFF;
+  --ink: #0E1016;
+  --muted: #5D6272;
+  --hair: #E3E5EA;
+  --red: #D21A2D;
+  --red-dark: #A8111F;
+  --font: "Geist", "Helvetica Neue", Arial, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { margin: 0; text-wrap: balance; letter-spacing: -0.02em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.section { padding-block: clamp(64px, 9vw, 112px); }
+.kicker { font-size: 14px; font-weight: 500; color: var(--red); }
+.h2 { font-size: clamp(28px, 3.6vw, 42px); font-weight: 600; line-height: 1.15; }
+.sub { color: var(--muted); font-size: 18px; max-width: 58ch; }
+.head { display: grid; gap: 14px; margin-bottom: 48px; }
+.head.center { text-align: center; justify-items: center; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; border: 0; border-radius: 999px; padding: 14px 26px; font: 600 15px var(--font); text-decoration: none; cursor: pointer; transition: background .2s, transform .2s; }
+.btn-red { background: var(--red); color: #fff; }
+.btn-red:hover { background: var(--red-dark); }
+.btn-line { background: transparent; color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.28); }
+.btn-line:hover { box-shadow: inset 0 0 0 1px #fff; }
+.btn .arr { transition: transform .2s; }
+.btn:hover .arr { transform: translateX(3px); }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--night); border-bottom: 1px solid rgba(255,255,255,.06); }
+.nav .wrap { display: flex; align-items: center; gap: 32px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; flex: none; }
+.brand img { height: 36px; width: auto; mix-blend-mode: lighten; display: block; }
+.by { font-size: 12px; color: rgba(255,255,255,.55); padding-left: 12px; border-left: 1px solid rgba(255,255,255,.18); line-height: 1.2; }
+.by b { color: #fff; font-weight: 600; }
+.nav-links { display: flex; gap: 28px; list-style: none; margin: 0 0 0 auto; padding: 0; }
+.nav-links a { color: rgba(255,255,255,.72); text-decoration: none; font-size: 15px; white-space: nowrap; }
+.nav-links a:hover { color: #fff; }
+.nav .btn { padding: 10px 20px; font-size: 14px; white-space: nowrap; }
+.menu { display: none; margin-left: auto; background: none; border: 0; color: #fff; padding: 8px; cursor: pointer; }
+.menu svg { width: 24px; height: 24px; display: block; }
+
+/* Hero */
+.hero { background: var(--night); color: #fff; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 24px; padding-block: clamp(40px, 6vw, 72px) 0; }
+.hero-copy { display: grid; gap: 22px; padding-bottom: clamp(40px, 6vw, 72px); min-width: 0; }
+.hero h1 { font-size: clamp(40px, 6vw, 68px); font-weight: 600; line-height: 1.04; }
+.hero h1 span { color: var(--red); }
+.hero .sub { color: rgba(255,255,255,.68); }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-art { align-self: end; min-width: 0; }
+.hero-art img { width: 100%; max-width: 560px; height: auto; display: block; margin-left: auto; mix-blend-mode: lighten; }
+
+/* Intro */
+.intro .wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
+.intro-copy { display: grid; gap: 18px; min-width: 0; }
+.intro-copy p { color: var(--muted); font-size: 17px; max-width: 56ch; }
+.facts { display: grid; grid-template-columns: 1fr 1fr; background: var(--card); border: 1px solid var(--hair); border-radius: 20px; overflow: hidden; }
+.fact { padding: 26px 24px; display: grid; gap: 4px; border-bottom: 1px solid var(--hair); }
+.fact:nth-child(odd) { border-right: 1px solid var(--hair); }
+.fact:nth-last-child(-n+2) { border-bottom: 0; }
+.fact b { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.fact span { color: var(--muted); font-size: 14px; }
+
+/* Features */
+.features { background: var(--card); border-block: 1px solid var(--hair); }
+.feat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.feat { background: var(--paper); border-radius: 20px; padding: 28px 24px; display: grid; gap: 10px; align-content: start; }
+.feat-ic { width: 44px; height: 44px; border-radius: 12px; background: var(--card); display: grid; place-items: center; color: var(--red); margin-bottom: 8px; border: 1px solid var(--hair); }
+.feat-ic svg { width: 22px; height: 22px; }
+.feat h3 { font-size: 19px; font-weight: 600; }
+.feat p { color: var(--muted); font-size: 15px; }
+
+/* X factor */
+.xlist { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.xrow { background: var(--card); border: 1px solid var(--hair); border-radius: 20px; padding: 28px; display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; }
+.xmark { grid-row: span 2; width: 36px; height: 36px; border-radius: 10px; background: var(--ink); color: var(--red); display: grid; place-items: center; font-weight: 700; font-size: 18px; }
+.xrow h3 { font-size: 19px; font-weight: 600; align-self: center; }
+.xrow p { color: var(--muted); font-size: 15px; }
+
+/* Products */
+.products { background: var(--card); border-block: 1px solid var(--hair); }
+.ptable-wrap { overflow-x: auto; border: 1px solid var(--hair); border-radius: 20px; }
+.ptable { width: 100%; border-collapse: collapse; min-width: 720px; font-size: 15px; }
+.ptable th { text-align: left; font-weight: 500; color: var(--muted); font-size: 13px; padding: 16px 22px; background: var(--paper); border-bottom: 1px solid var(--hair); }
+.ptable td { padding: 20px 22px; border-bottom: 1px solid var(--hair); vertical-align: top; }
+.ptable tr:last-child td { border-bottom: 0; }
+.ptable td:first-child { font-weight: 600; white-space: nowrap; }
+.ptable td:first-child small { display: block; font-weight: 400; color: var(--muted); font-size: 13px; }
+.chip { display: inline-block; font-size: 13px; padding: 2px 10px; border-radius: 999px; background: var(--paper); border: 1px solid var(--hair); margin: 0 4px 4px 0; white-space: nowrap; }
+.chip.red { background: #FCE9EB; border-color: #F6CDD2; color: var(--red-dark); }
+
+/* More */
+.more .wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
+.more .head { margin-bottom: 0; position: sticky; top: 100px; }
+.acc { border-top: 1px solid var(--hair); }
+.acc details { border-bottom: 1px solid var(--hair); }
+.acc summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-size: 18px; font-weight: 500; }
+.acc summary::-webkit-details-marker { display: none; }
+.acc summary::after { content: "+"; font-size: 24px; font-weight: 300; color: var(--muted); transition: transform .2s; }
+.acc details[open] summary::after { transform: rotate(45deg); color: var(--red); }
+.acc details p { color: var(--muted); padding: 0 0 22px; max-width: 60ch; }
+
+/* Demo */
+.demo { background: var(--night); color: #fff; }
+.demo .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
+.demo .sub { color: rgba(255,255,255,.66); }
+.demo .h2 span { color: var(--red); }
+.contact { display: grid; gap: 6px; margin-top: 28px; font-size: 15px; color: rgba(255,255,255,.75); }
+.contact b { color: #fff; font-weight: 500; }
+form { background: var(--card); color: var(--ink); border-radius: 24px; padding: clamp(22px, 3vw, 36px); display: grid; gap: 16px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+label { display: grid; gap: 6px; font-size: 14px; font-weight: 500; min-width: 0; }
+input, select { font: 400 15px var(--font); color: var(--ink); background: var(--paper); border: 1px solid var(--hair); border-radius: 12px; padding: 12px 14px; width: 100%; }
+input:focus, select:focus { outline: none; border-color: var(--ink); background: var(--card); }
+form .btn { justify-self: start; }
+.note { font-size: 14px; }
+.note.ok { color: #137a43; }
+.note.err { color: var(--red); }
+
+/* Footer */
+footer { background: var(--night); color: rgba(255,255,255,.6); border-top: 1px solid rgba(255,255,255,.08); padding-block: 48px 32px; font-size: 14px; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; align-items: flex-start; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 12px 28px; }
+.foot nav a { text-decoration: none; color: rgba(255,255,255,.75); }
+.foot nav a:hover { color: #fff; }
+.foot-bottom { margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.08); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+@media (max-width: 1000px) {
+  .nav-links { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; background: var(--night); padding: 8px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px)); border-bottom: 1px solid rgba(255,255,255,.08); }
+  .nav-links.open { display: flex; }
+  .nav-links a { display: block; padding: 12px 0; font-size: 17px; }
+  .menu { display: block; }
+  .nav .btn { display: none; }
+  .feat-grid { grid-template-columns: 1fr 1fr; }
+  .more .wrap, .demo .wrap, .intro .wrap { grid-template-columns: 1fr; }
+  .more .head { position: static; }
+}
+@media (max-width: 760px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero-copy { padding-bottom: 0; }
+  .hero-art img { margin: 0 auto; max-width: 420px; }
+  .xlist { grid-template-columns: 1fr; }
+  .by { display: none; }
+}
+@media (max-width: 560px) {
+  .feat-grid, .two { grid-template-columns: 1fr; }
+  .fact b { font-size: 24px; }
+  .xrow { padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="NXT Gate by Tunwal, home">
+      <img src="logo.png" alt="NXT Gate" width="640" height="238">
+      <span class="by">by <b>Tunwal</b></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#xfactor">Why NXT</a></li>
+      <li><a href="#products">Barriers</a></li>
+      <li><a href="#more">App</a></li>
+    </ul>
+    <a class="btn btn-red" href="#demo">Book a demo <span class="arr">→</span></a>
+    <button class="menu" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <h1>Your gate,<br>fully <span>under control.</span></h1>
+      <p class="sub">Boom barriers, number-plate cameras and one app that connects residents, guards and admins. Built and serviced by one team.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-red" href="#demo">Book a demo <span class="arr">→</span></a>
+        <a class="btn btn-line" href="#products">See barriers</a>
+      </div>
+    </div>
+    <div class="hero-art"><img src="gate-mark.jpg" alt="" width="690" height="520"></div>
+  </div>
+</section>
+
+<section class="section intro">
+  <div class="wrap">
+    <div class="intro-copy">
+      <span class="kicker">Where every visit begins</span>
+      <h2 class="h2">Every arrival starts at the gate. So should good security.</h2>
+      <p>Residents drive in, guests are expected, deliveries pile up and the milkman comes before sunrise. NXT Gate keeps track of all of it. The barrier knows which cars belong, the guard knows who is expected, and the app keeps a record of everyone who came and went.</p>
+      <p>Most gate apps stop at the guard's phone. Most barrier companies stop at the motor. We make both, so they work together from day one.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>99.7%</b><span>Number-plate read rate</span></div>
+      <div class="fact"><b>3–6 m</b><span>Boom lengths for any lane</span></div>
+      <div class="fact"><b>6 sec</b><span>Telescopic boom cycle</span></div>
+      <div class="fact"><b>IP66</b><span>Cameras built for monsoon</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section features" id="features">
+  <div class="wrap">
+    <div class="head center">
+      <span class="kicker">Features in focus</span>
+      <h2 class="h2">Everything that happens at the gate, in one system</h2>
+    </div>
+    <div class="feat-grid">
+      <article class="feat"><span class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></span><h3>Visitor management</h3><p>Guests get a pass before they arrive. Residents approve walk-ins with one tap.</p></article>
+      <article class="feat"><span class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 12h10"/></svg></span><h3>Vehicle &amp; ANPR</h3><p>Resident cars are recognised by number plate and let in without stopping.</p></article>
+      <article class="feat"><span class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V8h3v12M7 11h13"/></svg></span><h3>Boom barriers</h3><p>Brushless 24V barriers from 3 m to 6 m, installed and maintained by us.</p></article>
+      <article class="feat"><span class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></svg></span><h3>Guards &amp; patrol</h3><p>Patrol checks, SOS alerts and staff attendance from the guard's tablet.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="xfactor">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">The X factor</span>
+      <h2 class="h2">What sets NXT Gate apart</h2>
+      <p class="sub">The X in our name stands for the things we refuse to compromise on.</p>
+    </div>
+    <div class="xlist">
+      <article class="xrow"><span class="xmark">X</span><h3>Hardware and app from one team</h3><p>An approval in the app opens the barrier. No third-party integrations to break.</p></article>
+      <article class="xrow"><span class="xmark">X</span><h3>Works when the internet doesn't</h3><p>Plate recognition runs inside the camera, so the gate keeps working offline.</p></article>
+      <article class="xrow"><span class="xmark">X</span><h3>Safe by design</h3><p>Loop detectors keep the boom up while a vehicle is underneath it.</p></article>
+      <article class="xrow"><span class="xmark">X</span><h3>Backed by Tunwal</h3><p>Motor engineering, quality checks and a service network that stays after install day.</p></article>
+    </div>
+  </div>
+</section>
+<section class="section products" id="products">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Barriers &amp; devices</span>
+      <h2 class="h2">Pick the right gate for every lane</h2>
+      <p class="sub">All barriers come with reflective boom marking, a control unit and installation by our team.</p>
+    </div>
+    <div class="ptable-wrap">
+      <table class="ptable">
+        <thead><tr><th>Product</th><th>What it is</th><th>Sizes</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td>Advertising Boom<small>BS-AD02A</small></td><td>Wide boom with a branding panel for your society or company name</td><td><span class="chip">3 m</span><span class="chip">3.5 m</span><span class="chip">4 m</span></td><td>Society and campus main gates</td></tr>
+          <tr><td>Telescopic Barrier<small>BS-DZ112</small></td><td>24V brushless barrier with a 3-stage telescopic boom and 2 remotes</td><td><span class="chip">6 m</span><span class="chip red">6 sec cycle</span></td><td>Wide lanes with low headroom</td></tr>
+          <tr><td>Fence Barrier<small>BS-5DZM</small></td><td>Grille-style arm that stops bikes and people slipping under</td><td><span class="chip">5 m</span><span class="chip">6 m</span></td><td>Mixed vehicle and foot traffic</td></tr>
+          <tr><td>Heavy-Duty Fence Barrier<small>BS-6DZM</small></td><td>Stronger cabinet with a double-rail fence arm</td><td><span class="chip">6 m</span></td><td>Factories, warehouses, truck gates</td></tr>
+          <tr><td>ANPR Camera<small>BS-TVL35</small></td><td>Number-plate camera with built-in recognition, display and flash</td><td><span class="chip red">99.7% accuracy</span><span class="chip">IP66</span></td><td>Ticketless resident entry</td></tr>
+          <tr><td>Loop Detector<small>PD-132-24V</small></td><td>In-road sensor that holds the boom while a vehicle is under it</td><td><span class="chip">4 sensitivity levels</span></td><td>Every barrier lane</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section more" id="more">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Gate Tech app</span>
+      <h2 class="h2">There's more, too</h2>
+      <p class="sub">The small things that make the gate easier for residents, guards and the committee.</p>
+    </div>
+    <div class="acc">
+      <details open><summary>Pre-approved guest passes</summary><p>Share a QR code or OTP before guests arrive. The guard scans it and they drive straight in.</p></details>
+      <details><summary>Delivery management</summary><p>Leave-at-gate, quick passes for delivery staff and a clear log of every parcel that came in.</p></details>
+      <details><summary>Daily help &amp; staff attendance</summary><p>Maids, drivers and cooks get recurring passes. Residents see when they arrive and leave.</p></details>
+      <details><summary>Entry &amp; exit records</summary><p>Every vehicle, visitor and time stamp, searchable by gate, flat or date and ready to export.</p></details>
+      <details><summary>Emergency alerts</summary><p>Residents and guards can raise an SOS that reaches every guard and committee member at once.</p></details>
+      <details><summary>Multi-gate and township support</summary><p>Run several gates, blocks or whole clusters of societies from one admin dashboard.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section demo" id="demo">
+  <div class="wrap">
+    <div>
+      <div class="head" style="margin-bottom:0">
+        <span class="kicker">Book a demo</span>
+        <h2 class="h2">See NXT Gate at <span>your gate.</span></h2>
+        <p class="sub">Tell us about your property. We'll visit, measure your lanes and send a plan with a quote.</p>
+      </div>
+      <div class="contact">
+        <span>Email <b>hello@nxtgate.in</b></span>
+        <span>Phone <b>+91 00000 00000</b></span>
+      </div>
+    </div>
+    <form id="demoForm" novalidate>
+      <div class="two">
+        <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
+        <label for="f-mobile">Mobile<input id="f-mobile" name="mobile" type="tel" autocomplete="tel" required></label>
+      </div>
+      <div class="two">
+        <label for="f-property">Property name<input id="f-property" name="property" required></label>
+        <label for="f-city">City<input id="f-city" name="city" autocomplete="address-level2"></label>
+      </div>
+      <div class="two">
+        <label for="f-type">Property type<select id="f-type" name="type"><option>Housing society</option><option>Office or tech park</option><option>Factory or warehouse</option><option>Parking or township</option></select></label>
+        <label for="f-role">Your role<select id="f-role" name="role"><option>Committee member</option><option>Facility manager</option><option>Developer</option><option>Resident</option></select></label>
+      </div>
+      <label for="f-need">Interested in<select id="f-need" name="need"><option>Barriers and app</option><option>Boom barriers only</option><option>Gate Tech app only</option><option>ANPR cameras</option></select></label>
+      <button class="btn btn-red" type="submit">Book a demo <span class="arr">→</span></button>
+      <p class="note" id="formNote" role="status" hidden></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="#top"><img src="logo.png" alt="NXT Gate" width="640" height="238"><span class="by" style="display:block">by <b>Tunwal</b></span></a>
+      <nav aria-label="Footer"><a href="#features">Features</a><a href="#xfactor">Why NXT</a><a href="#products">Barriers</a><a href="#more">App</a><a href="#demo">Book a demo</a></nav>
+    </div>
+    <div class="foot-bottom"><span>© 2026 NXT Gate by Tunwal</span><span>hello@nxtgate.in</span></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('menuBtn'), links = document.getElementById('navLinks');
+  btn.addEventListener('click', function () { btn.setAttribute('aria-expanded', links.classList.toggle('open')); });
+  links.addEventListener('click', function (e) { if (e.target.tagName === 'A') { links.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
+
+  var form = document.getElementById('demoForm'), note = document.getElementById('formNote');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var missing = ['f-name', 'f-mobile', 'f-property'].filter(function (id) { return !document.getElementById(id).value.trim(); });
+    note.hidden = false;
+    if (missing.length) {
+      note.className = 'note err';
+      note.textContent = 'Please add your name, mobile and property name.';
+      document.getElementById(missing[0]).focus();
+      return;
+    }
+    note.className = 'note ok';
+    note.textContent = 'Thanks. Our team will call you within one working day.';
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>
